@@ -5,13 +5,17 @@ using UnityEngine;
 public class BlueScript : MonoBehaviour
 {
     public GameObject waterObject; // Reference to the Water object
-
+    public GameObject block;
     void Start()
     {
         // Ensure the water object is initially inactive
         if (waterObject != null)
         {
             waterObject.SetActive(false);
+        }
+        if (block != null)
+        {
+            block.SetActive(false);
         }
     }
 
@@ -22,7 +26,7 @@ public class BlueScript : MonoBehaviour
         {
             // Deactivate the gem (this object)
             gameObject.SetActive(false);
-
+            block.SetActive(true);
             // Activate the water object
             if (waterObject != null)
             {

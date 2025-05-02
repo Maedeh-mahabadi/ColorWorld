@@ -21,6 +21,17 @@ public class PlayerMovement : MonoBehaviour
         Move=Input.GetAxis("Horizontal");
         rb.velocity=new Vector2(Speed*Move,rb.velocity.y);
 
+        // Flip the character based on movement direction
+        if (Move > 0) // Moving right
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (Move < 0) // Moving left
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+
+
         if(Input.GetButtonDown("Jump") && isJumping==false)
         {
             rb.AddForce(new Vector2(rb.velocity.x,Jump));
@@ -29,14 +40,15 @@ public class PlayerMovement : MonoBehaviour
     }
 
      private void OnCollisionEnter2D(Collision2D other){
-        if(other.gameObject.tag=="Ground"){
+        if(other.gameObject.tag=="Ground"|| other.gameObject.tag == "WaterGround")
+        {
             isJumping=false;
             Debug.Log("on the Ground");
         }
     }
 
         private void OnCollisionExit2D(Collision2D other){
-        if(other.gameObject.tag=="Ground"){
+        if(other.gameObject.tag=="Ground"|| other.gameObject.tag == "WaterGround"){
             isJumping=true;
             Debug.Log("on the fly");
         }

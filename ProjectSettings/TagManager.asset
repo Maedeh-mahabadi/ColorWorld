@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - FinishLine
   - Gem
+  - Gray
+  - WaterGround
   layers:
   - Default
   - TransparentFX

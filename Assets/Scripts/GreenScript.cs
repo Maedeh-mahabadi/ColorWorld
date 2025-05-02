@@ -1,15 +1,16 @@
- 
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathScript : MonoBehaviour
+public class GreenScript : MonoBehaviour
 {
-    public GameObject waterObject;
+    public GameObject grayObject;
     public GameObject GemObject;
-    public GameObject startPoint;
     public GameObject player;
+    // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -20,9 +21,8 @@ public class DeathScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Player")){
-            player.transform.position=startPoint.transform.position;
-        waterObject.SetActive(false);
-        GemObject.SetActive(true);
+            grayObject.SetActive(false);
+            GemObject.SetActive(false);
 
         }
     }
