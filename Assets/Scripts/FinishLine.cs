@@ -17,8 +17,20 @@ public class FinishLine : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.tag=="Player"){
-            SceneManager.LoadScene("Level2");
+        if (other.gameObject.CompareTag("Player"))
+        {
+            // Get the current active scene
+            Scene currentScene = SceneManager.GetActiveScene();
+
+            // Check the current scene name and load the next scene
+            if (currentScene.name == "Level1")
+            {
+                SceneManager.LoadScene("Level2");
+            }
+            else if (currentScene.name == "Level2")
+            {
+                SceneManager.LoadScene("Level3");
+            }
         }
     }
 }

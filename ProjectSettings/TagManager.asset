@@ -10,6 +10,7 @@ TagManager:
   - Gem
   - Gray
   - WaterGround
+  - Light
   layers:
   - Default
   - TransparentFX
