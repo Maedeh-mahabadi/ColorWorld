@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PinkScript : MonoBehaviour
 {
+        private AudioManager audioManager;
+
     public float jumpBoost = 100f; // Amount to add to the player's jump force
     private float originalJump;   // To store the player's original jump force
 
     // Start is called before the first frame update
     void Start()
     {
-        
+                audioManager = FindObjectOfType<AudioManager>();
+
     }
 
     // Update is called once per frame
@@ -38,6 +41,14 @@ public class PinkScript : MonoBehaviour
                 // Deactivate the gem
                 gameObject.SetActive(false);
             }
+             // Play gem audio
+            if (audioManager != null)
+            {
+                audioManager.PlayGemAudio();
+            }
+
+            // Logic for collecting the gem
+            Debug.Log("Gem collected!");
         }
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class YellowScript : MonoBehaviour
 {
+        private AudioManager audioManager;
+
     public Camera mainCamera; // Reference to the main camera
     public GameObject yellowGem; 
     public GameObject Light; // Reference to the yellow gem
@@ -11,6 +13,8 @@ public class YellowScript : MonoBehaviour
 
     void Start()
     {
+                audioManager = FindObjectOfType<AudioManager>();
+
         // Ensure the main camera is assigned
         if (mainCamera == null)
         {
@@ -40,6 +44,14 @@ public class YellowScript : MonoBehaviour
             {
                 yellowGem.SetActive(false);
             }
+             // Play gem audio
+            if (audioManager != null)
+            {
+                audioManager.PlayGemAudio();
+            }
+
+            // Logic for collecting the gem
+            Debug.Log("Gem collected!");
         }
     }
 }

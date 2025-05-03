@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DeathScript3 : MonoBehaviour
 {
+        private AudioManager audioManager;
+
     public GameObject player; // Reference to the player
     public GameObject lightObject; // Reference to the Light object
     public GameObject yellowGem; // Reference to the yellow gem
@@ -15,6 +17,8 @@ public class DeathScript3 : MonoBehaviour
 
     void Start()
     {
+                audioManager = FindObjectOfType<AudioManager>();
+
         // Store the original camera color
         if (mainCamera != null)
         {
@@ -75,6 +79,14 @@ public class DeathScript3 : MonoBehaviour
                 mainCamera.backgroundColor = originalCameraColor;
                 Debug.Log("Camera color reset to original!");
             }
+             // Play death audio
+            if (audioManager != null)
+            {
+                audioManager.PlayDeathAudio();
+            }
+
+            // Reset player position or other logic
+            Debug.Log("Player died!");
         }
     }
 }

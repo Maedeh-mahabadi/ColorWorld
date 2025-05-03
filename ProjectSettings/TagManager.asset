@@ -11,6 +11,7 @@ TagManager:
   - Gray
   - WaterGround
   - Light
+  - Audio
   layers:
   - Default
   - TransparentFX

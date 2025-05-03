@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class BlueScript : MonoBehaviour
 {
+        private AudioManager audioManager;
+
     public GameObject waterObject; // Reference to the Water object
     public GameObject block;
     void Start()
     {
+                audioManager = FindObjectOfType<AudioManager>();
+
         // Ensure the water object is initially inactive
         if (waterObject != null)
         {
@@ -32,6 +36,14 @@ public class BlueScript : MonoBehaviour
             {
                 waterObject.SetActive(true);
             }
+             // Play gem audio
+            if (audioManager != null)
+            {
+                audioManager.PlayGemAudio();
+            }
+
+            // Logic for collecting the gem
+            Debug.Log("Gem collected!");
         }
     }
 }
